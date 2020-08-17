@@ -12,18 +12,24 @@
 //==============================================================================
 SweetBellSynthAudioProcessor::SweetBellSynthAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
-                     #if ! JucePlugin_IsMidiEffect
-                      #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
-                      #endif
-                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
-                     #endif
-                       )
+    : AudioProcessor(BusesProperties()
+#if ! JucePlugin_IsMidiEffect
+#if ! JucePlugin_IsSynth
+        .withInput("Input", juce::AudioChannelSet::stereo(), true)
+#endif
+        .withOutput("Output", juce::AudioChannelSet::stereo(), true)
+#endif
+    ),
+    attackTime(0.1f),
+    state(*this, nullptr, "PARAMETER",
+        {
+            std::make_unique<juce::AudioParameterFloat>("attack", "Attack", juce::NormalisableRange<float>(-48.0f, 0.0f), -15.0f)
+        })
+
 #endif
 {
 
-    juce::Logger::outputDebugString("In Plugin Processor");
+
     mySynth.clearVoices();
     for (int i = 0; i < 5; ++i) {
         mySynth.addVoice(new SynthVoice());
