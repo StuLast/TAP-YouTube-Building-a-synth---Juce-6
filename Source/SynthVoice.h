@@ -23,4 +23,6 @@ public:
     void renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples);
 
 private:
+    double level;
+    double frequency;
 };

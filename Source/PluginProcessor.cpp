@@ -22,6 +22,15 @@ SweetBellSynthAudioProcessor::SweetBellSynthAudioProcessor()
                        )
 #endif
 {
+
+    juce::Logger::outputDebugString("In Plugin Processor");
+    mySynth.clearVoices();
+    for (int i = 0; i < 5; ++i) {
+        mySynth.addVoice(new SynthVoice());
+    }
+
+    mySynth.clearSounds();
+    mySynth.addSound(new SynthSound());
 }
 
 SweetBellSynthAudioProcessor::~SweetBellSynthAudioProcessor()
@@ -93,8 +102,10 @@ void SweetBellSynthAudioProcessor::changeProgramName (int index, const juce::Str
 //==============================================================================
 void SweetBellSynthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+    juce::ignoreUnused(samplesPerBlock);
+    lastSampleRate = sampleRate;
+    mySynth.setCurrentPlaybackSampleRate(lastSampleRate);
+
 }
 
 void SweetBellSynthAudioProcessor::releaseResources()
@@ -148,12 +159,10 @@ void SweetBellSynthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
     // the samples and the outer loop is handling the channels.
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        auto* channelData = buffer.getWritePointer (channel);
 
-        // ..do something to the data...
-    }
+
+    mySynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
+
 }
 
 //==============================================================================

@@ -6,6 +6,41 @@
               companyWebsite="http://spycedconcepts.uk" companyEmail="hello@spycedconcepts.uk"
               pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn">
   <MAINGROUP id="bavYsn" name="SweetBellSynth">
+    <GROUP id="{EE210F28-BF7D-E446-FD1E-0A61D7AA928E}" name="Maximilian">
+      <GROUP id="{79F851C4-5A0D-3CA6-6F4E-7FA5F5958B0C}" name="commandline">
+        <FILE id="knkLYe" name="main.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/cpp/commandline/main.cpp"/>
+        <FILE id="HvQmBZ" name="maxi" compile="0" resource="1" file="C:/Libraries/Maximilian/cpp/commandline/maxi"/>
+        <FILE id="eQAuvR" name="stb_vorbis.c" compile="1" resource="0" file="C:/Libraries/Maximilian/cpp/commandline/stb_vorbis.c"/>
+        <FILE id="alas7x" name="stb_vorbis.h" compile="0" resource="0" file="C:/Libraries/Maximilian/cpp/commandline/stb_vorbis.h"/>
+      </GROUP>
+      <GROUP id="{C4341474-1EF4-6DBC-3F4F-0486D919285C}" name="src">
+        <GROUP id="{89E51DF5-60F9-8C7F-2C07-00FF43968D70}" name="libs">
+          <FILE id="Gx7N6s" name="fft.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/src/libs/fft.cpp"/>
+          <FILE id="RvmFZb" name="fft.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/fft.h"/>
+          <FILE id="XnQzwG" name="maxiAtoms.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiAtoms.cpp"/>
+          <FILE id="OgPNfI" name="maxiAtoms.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiAtoms.h"/>
+          <FILE id="siUC0q" name="maxiBark.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiBark.cpp"/>
+          <FILE id="ldJcPs" name="maxiBark.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiBark.h"/>
+          <FILE id="y1X8Ku" name="maxiConvolve.cpp" compile="1" resource="0"
+                file="C:/Libraries/Maximilian/src/libs/maxiConvolve.cpp"/>
+          <FILE id="oN5K9s" name="maxiConvolve.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiConvolve.h"/>
+          <FILE id="jzeWw0" name="maxiFFT.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiFFT.cpp"/>
+          <FILE id="FYtuXK" name="maxiFFT.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiFFT.h"/>
+          <FILE id="Jj6F59" name="maxiGrains.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiGrains.cpp"/>
+          <FILE id="QEdXIo" name="maxiGrains.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiGrains.h"/>
+          <FILE id="d6V0Ay" name="maxim.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/maxim.h"/>
+          <FILE id="jJGaWq" name="maxiMFCC.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiMFCC.cpp"/>
+          <FILE id="ktLya8" name="maxiMFCC.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiMFCC.h"/>
+          <FILE id="UjU71Y" name="maxiReverb.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiReverb.h"/>
+          <FILE id="tI9dFm" name="maxiReverb.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/src/libs/maxiReverb.cpp"/>
+          <FILE id="YFW3xc" name="sineTable.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/sineTable.h"/>
+          <FILE id="it0vfh" name="stb_vorbis.c" compile="1" resource="0" file="C:/Libraries/Maximilian/src/libs/stb_vorbis.c"/>
+          <FILE id="uakD6K" name="stb_vorbis.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/libs/stb_vorbis.h"/>
+        </GROUP>
+        <FILE id="EpwFrB" name="maximilian.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/src/maximilian.cpp"/>
+        <FILE id="tZ97eD" name="maximilian.h" compile="0" resource="0" file="C:/Libraries/Maximilian/src/maximilian.h"/>
+      </GROUP>
+    </GROUP>
     <GROUP id="{D1609185-5E13-073D-0084-BEE73D675BE3}" name="Source">
       <FILE id="XH5KzK" name="SynthVoice.cpp" compile="1" resource="0" file="Source/SynthVoice.cpp"/>
       <FILE id="JgnUhe" name="SynthVoice.h" compile="0" resource="0" file="Source/SynthVoice.h"/>
@@ -24,7 +59,7 @@
   <EXPORTFORMATS>
     <VS2019 targetFolder="Builds/VisualStudio2019">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="SweetBellSynth"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="SweetBellSynth" headerPath="C:\Libraries\Maximilian\src;&#10;C:\Libraries\Maximilian\cpp\commandline;"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="SweetBellSynth"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
