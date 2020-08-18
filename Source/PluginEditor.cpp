@@ -20,13 +20,12 @@ SweetBellSynthAudioProcessorEditor::SweetBellSynthAudioProcessorEditor (SweetBel
     
     attackSlider.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
     attackSlider.setRange(0.1, 5000.00);
-    //attackSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 20.0, 10.0);
+    attackSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 20.0, 10.0);
     attackSlider.setValue(0.1);
-    
-    attackSlider.addListener(this);
+    treeState = make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.state, "attack", attackSlider);
     addAndMakeVisible(&attackSlider);
 
-    treeState = make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (audioProcessor.state, "attack", attackSlider);
+
 
 }
 
@@ -47,10 +46,3 @@ void SweetBellSynthAudioProcessorEditor::resized()
 
 }
 
-void SweetBellSynthAudioProcessorEditor::sliderValueChanged(juce::Slider* slider)
-{
-    if (slider == &attackSlider)
-    {
-        audioProcessor.attackTime = attackSlider.getValue();
-    }
-}

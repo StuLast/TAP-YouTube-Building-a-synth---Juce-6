@@ -112,6 +112,7 @@ void SweetBellSynthAudioProcessor::prepareToPlay (double sampleRate, int samples
     lastSampleRate = sampleRate;
     mySynth.setCurrentPlaybackSampleRate(lastSampleRate);
 
+
 }
 
 void SweetBellSynthAudioProcessor::releaseResources()
@@ -165,7 +166,6 @@ void SweetBellSynthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
     // the samples and the outer loop is handling the channels.
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
-
 
     mySynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
 

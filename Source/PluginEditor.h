@@ -15,8 +15,8 @@
 /**
 */
 class SweetBellSynthAudioProcessorEditor  : 
-    public juce::AudioProcessorEditor,
-    public juce::Slider::Listener
+    public juce::AudioProcessorEditor
+
 {
 public:
     SweetBellSynthAudioProcessorEditor (SweetBellSynthAudioProcessor&);
