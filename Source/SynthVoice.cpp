@@ -22,10 +22,6 @@ void SynthVoice::startNote(int midiNoteNumber, float velocity, juce::Synthesiser
     level = velocity;
     frequency = juce::MidiMessage::getMidiNoteInHertz(midiNoteNumber);
 
-    //@TODO remove debugging code
-    std::string debugMessage = "Midi Note: " + std::to_string(midiNoteNumber) + ": Hz: " + std::to_string(frequency);
-    juce::Logger::outputDebugString(debugMessage);
-    //@END debug code
 }
 
 void SynthVoice::stopNote(float velocity, bool allowTailOff)

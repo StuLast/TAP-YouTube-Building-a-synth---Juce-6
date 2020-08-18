@@ -15,12 +15,12 @@
 //==============================================================================
 /**
 */
-class SweetBellSynthAudioProcessor  : public juce::AudioProcessor
+class TAPSynthTutorialAudioProcessor  : public juce::AudioProcessor
 {
 public:
     //==============================================================================
-    SweetBellSynthAudioProcessor();
-    ~SweetBellSynthAudioProcessor() override;
+    TAPSynthTutorialAudioProcessor();
+    ~TAPSynthTutorialAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -65,5 +65,5 @@ private:
     SynthVoice* myVoice;
     double lastSampleRate;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SweetBellSynthAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TAPSynthTutorialAudioProcessor)
 };

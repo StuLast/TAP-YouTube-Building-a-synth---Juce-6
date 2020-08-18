@@ -14,26 +14,25 @@
 //==============================================================================
 /**
 */
-class SweetBellSynthAudioProcessorEditor  : 
-    public juce::AudioProcessorEditor
+class TAPSynthTutorialAudioProcessorEditor  :  public juce::AudioProcessorEditor
 
 {
 public:
-    SweetBellSynthAudioProcessorEditor (SweetBellSynthAudioProcessor&);
-    ~SweetBellSynthAudioProcessorEditor() override;
+    TAPSynthTutorialAudioProcessorEditor (TAPSynthTutorialAudioProcessor&);
+    ~TAPSynthTutorialAudioProcessorEditor() override;
 
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
-    void sliderValueChanged(juce::Slider* slider) override;
+
 
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    SweetBellSynthAudioProcessor& audioProcessor;
+    TAPSynthTutorialAudioProcessor& audioProcessor;
     juce::Slider attackSlider;
 
     std::unique_ptr <juce::AudioProcessorValueTreeState::SliderAttachment> treeState;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SweetBellSynthAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TAPSynthTutorialAudioProcessorEditor)
 };

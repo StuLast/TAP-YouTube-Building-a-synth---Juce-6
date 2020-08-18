@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="ja95b3" name="SweetBellSynth" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
-              companyName="Spyced Concepts" companyCopyright="Spyced Concepts"
+<JUCERPROJECT id="ja95b3" name="TAP-Synth-Tutorials" projectType="audioplug"
+              useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
+              jucerFormatVersion="1" companyName="Spyced Concepts" companyCopyright="Spyced Concepts"
               companyWebsite="http://spycedconcepts.uk" companyEmail="hello@spycedconcepts.uk"
               pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn">
-  <MAINGROUP id="bavYsn" name="SweetBellSynth">
+  <MAINGROUP id="bavYsn" name="TAP-Synth-Tutorials">
     <GROUP id="{EE210F28-BF7D-E446-FD1E-0A61D7AA928E}" name="Maximilian">
       <GROUP id="{79F851C4-5A0D-3CA6-6F4E-7FA5F5958B0C}" name="commandline">
         <FILE id="knkLYe" name="main.cpp" compile="1" resource="0" file="C:/Libraries/Maximilian/cpp/commandline/main.cpp"/>

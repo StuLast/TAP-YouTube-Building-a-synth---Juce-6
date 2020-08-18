@@ -10,7 +10,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-SweetBellSynthAudioProcessorEditor::SweetBellSynthAudioProcessorEditor (SweetBellSynthAudioProcessor& p)
+TAPSynthTutorialAudioProcessorEditor::TAPSynthTutorialAudioProcessorEditor (TAPSynthTutorialAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
     // Make sure that before the constructor has finished, you've set the
@@ -25,21 +25,19 @@ SweetBellSynthAudioProcessorEditor::SweetBellSynthAudioProcessorEditor (SweetBel
     treeState = make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.state, "attack", attackSlider);
     addAndMakeVisible(&attackSlider);
 
-
-
 }
 
-SweetBellSynthAudioProcessorEditor::~SweetBellSynthAudioProcessorEditor()
+TAPSynthTutorialAudioProcessorEditor::~TAPSynthTutorialAudioProcessorEditor()
 {
 }
 
 //==============================================================================
-void SweetBellSynthAudioProcessorEditor::paint (juce::Graphics& g)
+void TAPSynthTutorialAudioProcessorEditor::paint (juce::Graphics& g)
 {
     
 }
 
-void SweetBellSynthAudioProcessorEditor::resized()
+void TAPSynthTutorialAudioProcessorEditor::resized()
 {
     int margin = 20;
     attackSlider.setBounds(10, 10, 40, 100);

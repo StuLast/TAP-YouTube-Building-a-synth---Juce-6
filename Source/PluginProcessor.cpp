@@ -10,7 +10,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-SweetBellSynthAudioProcessor::SweetBellSynthAudioProcessor()
+TAPSynthTutorialAudioProcessor::TAPSynthTutorialAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
     : AudioProcessor(BusesProperties()
 #if ! JucePlugin_IsMidiEffect
@@ -39,17 +39,17 @@ SweetBellSynthAudioProcessor::SweetBellSynthAudioProcessor()
     mySynth.addSound(new SynthSound());
 }
 
-SweetBellSynthAudioProcessor::~SweetBellSynthAudioProcessor()
+TAPSynthTutorialAudioProcessor::~TAPSynthTutorialAudioProcessor()
 {
 }
 
 //==============================================================================
-const juce::String SweetBellSynthAudioProcessor::getName() const
+const juce::String TAPSynthTutorialAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool SweetBellSynthAudioProcessor::acceptsMidi() const
+bool TAPSynthTutorialAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -58,7 +58,7 @@ bool SweetBellSynthAudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool SweetBellSynthAudioProcessor::producesMidi() const
+bool TAPSynthTutorialAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -67,7 +67,7 @@ bool SweetBellSynthAudioProcessor::producesMidi() const
    #endif
 }
 
-bool SweetBellSynthAudioProcessor::isMidiEffect() const
+bool TAPSynthTutorialAudioProcessor::isMidiEffect() const
 {
    #if JucePlugin_IsMidiEffect
     return true;
@@ -76,37 +76,37 @@ bool SweetBellSynthAudioProcessor::isMidiEffect() const
    #endif
 }
 
-double SweetBellSynthAudioProcessor::getTailLengthSeconds() const
+double TAPSynthTutorialAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int SweetBellSynthAudioProcessor::getNumPrograms()
+int TAPSynthTutorialAudioProcessor::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int SweetBellSynthAudioProcessor::getCurrentProgram()
+int TAPSynthTutorialAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void SweetBellSynthAudioProcessor::setCurrentProgram (int index)
+void TAPSynthTutorialAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const juce::String SweetBellSynthAudioProcessor::getProgramName (int index)
+const juce::String TAPSynthTutorialAudioProcessor::getProgramName (int index)
 {
     return {};
 }
 
-void SweetBellSynthAudioProcessor::changeProgramName (int index, const juce::String& newName)
+void TAPSynthTutorialAudioProcessor::changeProgramName (int index, const juce::String& newName)
 {
 }
 
 //==============================================================================
-void SweetBellSynthAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void TAPSynthTutorialAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     juce::ignoreUnused(samplesPerBlock);
     lastSampleRate = sampleRate;
@@ -115,14 +115,14 @@ void SweetBellSynthAudioProcessor::prepareToPlay (double sampleRate, int samples
 
 }
 
-void SweetBellSynthAudioProcessor::releaseResources()
+void TAPSynthTutorialAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool SweetBellSynthAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool TAPSynthTutorialAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
   #if JucePlugin_IsMidiEffect
     juce::ignoreUnused (layouts);
@@ -145,7 +145,7 @@ bool SweetBellSynthAudioProcessor::isBusesLayoutSupported (const BusesLayout& la
 }
 #endif
 
-void SweetBellSynthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+void TAPSynthTutorialAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
@@ -172,25 +172,25 @@ void SweetBellSynthAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
 }
 
 //==============================================================================
-bool SweetBellSynthAudioProcessor::hasEditor() const
+bool TAPSynthTutorialAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-juce::AudioProcessorEditor* SweetBellSynthAudioProcessor::createEditor()
+juce::AudioProcessorEditor* TAPSynthTutorialAudioProcessor::createEditor()
 {
-    return new SweetBellSynthAudioProcessorEditor (*this);
+    return new TAPSynthTutorialAudioProcessorEditor (*this);
 }
 
 //==============================================================================
-void SweetBellSynthAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
+void TAPSynthTutorialAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
 }
 
-void SweetBellSynthAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void TAPSynthTutorialAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
@@ -200,5 +200,5 @@ void SweetBellSynthAudioProcessor::setStateInformation (const void* data, int si
 // This creates new instances of the plugin..
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new SweetBellSynthAudioProcessor();
+    return new TAPSynthTutorialAudioProcessor();
 }
