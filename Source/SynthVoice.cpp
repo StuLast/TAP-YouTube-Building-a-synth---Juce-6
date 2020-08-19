@@ -15,6 +15,16 @@ bool SynthVoice::canPlaySound(juce::SynthesiserSound* sound)
     return dynamic_cast<SynthSound*>(sound) != nullptr;
 }
 
+void SynthVoice::getParam(float attack)
+{
+    juce::String message = "Attack reported to : " + std::to_string(attack);
+    juce::Logger::outputDebugString(message);
+    env1.setAttack(double(attack));
+    env1.setDecay(500);
+    env1.setSustain(0.8);
+    env1.setRelease(2000);
+}
+
 void SynthVoice::startNote(int midiNoteNumber, float velocity, juce::SynthesiserSound* sound, int currentPitchWheelPosition)
 {
     env1.trigger = 1;
@@ -36,10 +46,8 @@ void SynthVoice::stopNote(float velocity, bool allowTailOff)
 void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples)
 {
     
-    env1.setAttack(2000);
-    env1.setDecay(500);
-    env1.setSustain(0.8);
-    env1.setRelease(2000);
+
+
 
     for (int sample = 0; sample < numSamples; ++sample)
     {

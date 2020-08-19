@@ -56,7 +56,7 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
     float attackTime;
-    juce::AudioProcessorValueTreeState state;
+    juce::AudioProcessorValueTreeState tree;
 
 private:
     //==============================================================================

@@ -17,6 +17,7 @@ class SynthVoice : public juce::SynthesiserVoice
 {
 public:
     bool canPlaySound(juce::SynthesiserSound* sound);
+    void getParam(float attack);
     void startNote(int midiNoteNumber, float velocity, juce::SynthesiserSound* sound, int currentPitchWheelPosition);
     void stopNote(float velocity, bool allowTailOff);
     void pitchWheelMoved(int newPitchWheelValue);
