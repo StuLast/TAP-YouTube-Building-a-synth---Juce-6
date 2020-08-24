@@ -56,13 +56,13 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
     float attackTime;
-    juce::AudioProcessorValueTreeState tree;
-
+    
 private:
     //==============================================================================
 
     juce::Synthesiser mySynth;
-    SynthVoice* myVoice;
+    SynthVoice* myVoice; 
+    juce::AudioProcessorValueTreeState valueTreeState;
     double lastSampleRate;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TAPSynthTutorialAudioProcessor)

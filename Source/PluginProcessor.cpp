@@ -21,7 +21,7 @@ TAPSynthTutorialAudioProcessor::TAPSynthTutorialAudioProcessor()
 #endif
     ),
     attackTime(0.1f),
-    tree(*this, nullptr, "PARAMETER",
+    valueTreeState(*this, nullptr, "PARAMETER",
         {
             std::make_unique<juce::AudioParameterFloat>("attack", "Attack", juce::NormalisableRange<float>(-48.0f, 0.0f), -15.0f)
         })
@@ -154,7 +154,7 @@ void TAPSynthTutorialAudioProcessor::processBlock (juce::AudioBuffer<float>& buf
     {
         if (myVoice = dynamic_cast<SynthVoice*>(mySynth.getVoice(i)))
         {
-            myVoice->getParam(tree.getParameterAsValue("Attack").getValue());
+            myVoice->getParam(valueTreeState.getParameterAsValue("Attack").getValue());
         }
     }
 
@@ -186,7 +186,7 @@ bool TAPSynthTutorialAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor* TAPSynthTutorialAudioProcessor::createEditor()
 {
-    return new TAPSynthTutorialAudioProcessorEditor (*this);
+    return new TAPSynthTutorialAudioProcessorEditor (*this, valueTreeState);
 }
 
 //==============================================================================
