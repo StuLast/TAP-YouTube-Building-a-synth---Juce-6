@@ -16,8 +16,10 @@
 */
 class TapsynthTutorialsAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
+    typedef juce::AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
+
 public:
-    TapsynthTutorialsAudioProcessorEditor (TapsynthTutorialsAudioProcessor&);
+    TapsynthTutorialsAudioProcessorEditor (TapsynthTutorialsAudioProcessor&, juce::AudioProcessorValueTreeState& vts);
     ~TapsynthTutorialsAudioProcessorEditor() override;
 
     //==============================================================================
@@ -28,6 +30,8 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     TapsynthTutorialsAudioProcessor& audioProcessor;
+    juce::AudioProcessorValueTreeState& valueTreeState;
+    juce::Slider attackSlider;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TapsynthTutorialsAudioProcessorEditor)
 };
