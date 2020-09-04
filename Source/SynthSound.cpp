@@ -2,7 +2,7 @@
   ==============================================================================
 
     SynthSound.cpp
-    Created: 13 Aug 2020 1:59:44pm
+    Created: 4 Sep 2020 12:44:48pm
     Author:  stuar
 
   ==============================================================================
@@ -12,10 +12,10 @@
 
 bool SynthSound::appliesToNote(int midiNoteNumber)
 {
-    return true;
+    return false;
 }
 
-bool SynthSound::appliesToChannel(int midinChannel)
+bool SynthSound::appliesToChannel(int channelNumber)
 {
-    return true;
+    return false;
 }

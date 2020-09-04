@@ -9,18 +9,16 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "SynthSound.h"
-#include "SynthVoice.h"
 
 //==============================================================================
 /**
 */
-class TAPSynthTutorialAudioProcessor  : public juce::AudioProcessor
+class TapsynthTutorialsAudioProcessor  : public juce::AudioProcessor
 {
 public:
     //==============================================================================
-    TAPSynthTutorialAudioProcessor();
-    ~TAPSynthTutorialAudioProcessor() override;
+    TapsynthTutorialsAudioProcessor();
+    ~TapsynthTutorialsAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -55,15 +53,7 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    float attackTime;
-    
 private:
     //==============================================================================
-
-    juce::Synthesiser mySynth;
-    SynthVoice* myVoice; 
-    juce::AudioProcessorValueTreeState valueTreeState;
-    double lastSampleRate;
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TAPSynthTutorialAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TapsynthTutorialsAudioProcessor)
 };

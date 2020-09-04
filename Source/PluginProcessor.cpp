@@ -10,46 +10,31 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-TAPSynthTutorialAudioProcessor::TAPSynthTutorialAudioProcessor()
+TapsynthTutorialsAudioProcessor::TapsynthTutorialsAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-    : AudioProcessor(BusesProperties()
-#if ! JucePlugin_IsMidiEffect
-#if ! JucePlugin_IsSynth
-        .withInput("Input", juce::AudioChannelSet::stereo(), true)
-#endif
-        .withOutput("Output", juce::AudioChannelSet::stereo(), true)
-#endif
-    ),
-    attackTime(0.1f),
-    valueTreeState(*this, nullptr, "PARAMETER",
-        {
-            std::make_unique<juce::AudioParameterFloat>("attack", "Attack", juce::NormalisableRange<float>(-48.0f, 0.0f), -15.0f)
-        })
-
+     : AudioProcessor (BusesProperties()
+                     #if ! JucePlugin_IsMidiEffect
+                      #if ! JucePlugin_IsSynth
+                       .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
+                      #endif
+                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
+                     #endif
+                       )
 #endif
 {
-
-
-    mySynth.clearVoices();
-    for (int i = 0; i < 5; ++i) {
-        mySynth.addVoice(new SynthVoice());
-    }
-
-    mySynth.clearSounds();
-    mySynth.addSound(new SynthSound());
 }
 
-TAPSynthTutorialAudioProcessor::~TAPSynthTutorialAudioProcessor()
+TapsynthTutorialsAudioProcessor::~TapsynthTutorialsAudioProcessor()
 {
 }
 
 //==============================================================================
-const juce::String TAPSynthTutorialAudioProcessor::getName() const
+const juce::String TapsynthTutorialsAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool TAPSynthTutorialAudioProcessor::acceptsMidi() const
+bool TapsynthTutorialsAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -58,7 +43,7 @@ bool TAPSynthTutorialAudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool TAPSynthTutorialAudioProcessor::producesMidi() const
+bool TapsynthTutorialsAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -67,7 +52,7 @@ bool TAPSynthTutorialAudioProcessor::producesMidi() const
    #endif
 }
 
-bool TAPSynthTutorialAudioProcessor::isMidiEffect() const
+bool TapsynthTutorialsAudioProcessor::isMidiEffect() const
 {
    #if JucePlugin_IsMidiEffect
     return true;
@@ -76,53 +61,50 @@ bool TAPSynthTutorialAudioProcessor::isMidiEffect() const
    #endif
 }
 
-double TAPSynthTutorialAudioProcessor::getTailLengthSeconds() const
+double TapsynthTutorialsAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int TAPSynthTutorialAudioProcessor::getNumPrograms()
+int TapsynthTutorialsAudioProcessor::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int TAPSynthTutorialAudioProcessor::getCurrentProgram()
+int TapsynthTutorialsAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void TAPSynthTutorialAudioProcessor::setCurrentProgram (int index)
+void TapsynthTutorialsAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const juce::String TAPSynthTutorialAudioProcessor::getProgramName (int index)
+const juce::String TapsynthTutorialsAudioProcessor::getProgramName (int index)
 {
     return {};
 }
 
-void TAPSynthTutorialAudioProcessor::changeProgramName (int index, const juce::String& newName)
+void TapsynthTutorialsAudioProcessor::changeProgramName (int index, const juce::String& newName)
 {
 }
 
 //==============================================================================
-void TAPSynthTutorialAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void TapsynthTutorialsAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    juce::ignoreUnused(samplesPerBlock);
-    lastSampleRate = sampleRate;
-    mySynth.setCurrentPlaybackSampleRate(lastSampleRate);
-
-
+    // Use this method as the place to do any pre-playback
+    // initialisation that you need..
 }
 
-void TAPSynthTutorialAudioProcessor::releaseResources()
+void TapsynthTutorialsAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool TAPSynthTutorialAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool TapsynthTutorialsAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
   #if JucePlugin_IsMidiEffect
     juce::ignoreUnused (layouts);
@@ -145,18 +127,11 @@ bool TAPSynthTutorialAudioProcessor::isBusesLayoutSupported (const BusesLayout& 
 }
 #endif
 
-void TAPSynthTutorialAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+void TapsynthTutorialsAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
-    for (int i = 0; i < mySynth.getNumVoices(); i++)
-    {
-        if (myVoice = dynamic_cast<SynthVoice*>(mySynth.getVoice(i)))
-        {
-            myVoice->getParam(valueTreeState.getParameterAsValue("Attack").getValue());
-        }
-    }
 
     // In case we have more outputs than inputs, this code clears any output
     // channels that didn't contain input data, (because these aren't
@@ -173,31 +148,34 @@ void TAPSynthTutorialAudioProcessor::processBlock (juce::AudioBuffer<float>& buf
     // the samples and the outer loop is handling the channels.
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
+    for (int channel = 0; channel < totalNumInputChannels; ++channel)
+    {
+        auto* channelData = buffer.getWritePointer (channel);
 
-    mySynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
-
+        // ..do something to the data...
+    }
 }
 
 //==============================================================================
-bool TAPSynthTutorialAudioProcessor::hasEditor() const
+bool TapsynthTutorialsAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-juce::AudioProcessorEditor* TAPSynthTutorialAudioProcessor::createEditor()
+juce::AudioProcessorEditor* TapsynthTutorialsAudioProcessor::createEditor()
 {
-    return new TAPSynthTutorialAudioProcessorEditor (*this, valueTreeState);
+    return new TapsynthTutorialsAudioProcessorEditor (*this);
 }
 
 //==============================================================================
-void TAPSynthTutorialAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
+void TapsynthTutorialsAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
 }
 
-void TAPSynthTutorialAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void TapsynthTutorialsAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
@@ -207,5 +185,5 @@ void TAPSynthTutorialAudioProcessor::setStateInformation (const void* data, int 
 // This creates new instances of the plugin..
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new TAPSynthTutorialAudioProcessor();
+    return new TapsynthTutorialsAudioProcessor();
 }

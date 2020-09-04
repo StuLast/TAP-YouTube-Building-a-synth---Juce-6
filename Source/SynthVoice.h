@@ -1,8 +1,8 @@
 /*
   ==============================================================================
-
+  ;
     SynthVoice.h
-    Created: 13 Aug 2020 2:00:03pm
+    Created: 4 Sep 2020 12:45:10pm
     Author:  stuar
 
   ==============================================================================
@@ -11,7 +11,7 @@
 #pragma once
 #include <JuceHeader.h>
 #include "SynthSound.h"
-#include "Maximilian.h"
+#include "maximilian.h"
 
 class SynthVoice : public juce::SynthesiserVoice
 {
@@ -30,4 +30,6 @@ private:
     maxiOsc osc1;
     maxiEnv env1;
     maxiFilter filter1;
+
+
 };

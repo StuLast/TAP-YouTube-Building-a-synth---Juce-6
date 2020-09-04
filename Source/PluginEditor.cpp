@@ -9,39 +9,32 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-
-
-
 //==============================================================================
-TAPSynthTutorialAudioProcessorEditor::TAPSynthTutorialAudioProcessorEditor(TAPSynthTutorialAudioProcessor& p, juce::AudioProcessorValueTreeState& vts)
-    : AudioProcessorEditor(&p), audioProcessor(p), valueTreeState (vts)
+TapsynthTutorialsAudioProcessorEditor::TapsynthTutorialsAudioProcessorEditor (TapsynthTutorialsAudioProcessor& p)
+    : AudioProcessorEditor (&p), audioProcessor (p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
-    
-    attackSlider.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
-    attackSlider.setRange(0.1, 5000.00);
-    attackSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 20.0, 10.0);
-    attackSlider.setValue(0.1);
-    //valueTreeState.addParameterListener()
-    //sliderTree = make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.tree, "attack", attackSlider);
-    addAndMakeVisible(&attackSlider);
 }
 
-TAPSynthTutorialAudioProcessorEditor::~TAPSynthTutorialAudioProcessorEditor()
+TapsynthTutorialsAudioProcessorEditor::~TapsynthTutorialsAudioProcessorEditor()
 {
 }
 
 //==============================================================================
-void TAPSynthTutorialAudioProcessorEditor::paint (juce::Graphics& g)
+void TapsynthTutorialsAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    
+    // (Our component is opaque, so we must completely fill the background with a solid colour)
+    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+
+    g.setColour (juce::Colours::white);
+    g.setFont (15.0f);
+    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
 }
 
-void TAPSynthTutorialAudioProcessorEditor::resized()
+void TapsynthTutorialsAudioProcessorEditor::resized()
 {
-    int margin = 20;
-    attackSlider.setBounds(10, 10, 40, 100);
+    // This is generally where you'll want to lay out the positions of any
+    // subcomponents in your editor..
 }
-

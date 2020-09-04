@@ -2,7 +2,7 @@
   ==============================================================================
 
     SynthSound.h
-    Created: 13 Aug 2020 1:59:44pm
+    Created: 4 Sep 2020 12:44:48pm
     Author:  stuar
 
   ==============================================================================
@@ -14,9 +14,8 @@
 class SynthSound : public juce::SynthesiserSound
 {
 public:
-
     bool appliesToNote(int midiNoteNumber);
-    bool appliesToChannel(int midinChannel);
+    bool appliesToChannel(int channelNumber);
 
 private:
 };
