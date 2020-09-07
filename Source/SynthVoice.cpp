@@ -12,6 +12,9 @@
 
 bool SynthVoice::canPlaySound(juce::SynthesiserSound* sound)
 {
+    // Try to convert the more generic type SynthesiserSound(identified by "sound") into my derived type SynthSound.
+    // If it works, return true because it will have the features of SynthSound and therefore be able to play sound.
+    // If it fails, return false because it doesn't have the features of SynthSound.
     return dynamic_cast<SynthSound*>(sound) != nullptr;
 }
 

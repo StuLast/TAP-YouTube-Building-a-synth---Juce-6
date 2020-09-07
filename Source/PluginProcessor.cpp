@@ -28,6 +28,8 @@ TapsynthTutorialsAudioProcessor::TapsynthTutorialsAudioProcessor()
 
 #endif
 {
+    juce::Logger::outputDebugString("JUCE  OUTPUT: In AudioProcessor Class");
+
     mySynth.clearVoices();
     for (int i(0); i < 5; ++i)
     {

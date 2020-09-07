@@ -20,7 +20,7 @@ it recommends.
 
 -  The use of ```scopedPtr``` has now been superceded by ```std::unique_ptr<Type>```.  The benefits and complexities of this will be discussed elsewhere in the documentation.
 -  Namespaces are now fully referenced in the code.  As a general rule, ```Using``` is no longer employed.  For Example you should see ```std::cout``` in the body of your code instead of ```using std``` then ```cout``` in the body of your code.  The intent here is to reduce the risk of namespace collisions.
--  For particularly long namespace or class references, you can use ```typedef```, keeping it to he most focused scope possible
+-  For particularly long namespace or class references, you can use ```typedef```, keeping it to the most focused scope possible
 (ie method first, then class).  
 
 ### Juce Plugin Host - Audio File Player Plugin for Juce 6
@@ -29,6 +29,8 @@ To aid with development, I've cobbled together a very basic but usable Audio Fil
 
 ### YouTube Tutorial Specific Guidance
 
+ - [Juce Tutorial 19:  Setting Up and Using the Juce Plugin Host](https://github.com/Spyced-Concepts/AudioFilePlayerPlugin)
+ - [Juce Tutorial 22:  Building a Synthesizer Part 2 (Midi Functionality)](/docs/lesson-reference/juce-tutorial-22.md)
  - [Juce Tutorial 24 - Building a Synthesizer Part 4 (Controlling Parameters and UI)](docs/lesson-reference/juce-tutorial-24.md)
 
 
