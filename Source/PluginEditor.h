@@ -31,6 +31,7 @@ private:
     // access the processor object that created it.
     TapsynthTutorialsAudioProcessor& audioProcessor;
     juce::AudioProcessorValueTreeState& valueTreeState;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> attackSliderAttachment;
     juce::Slider attackSlider;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TapsynthTutorialsAudioProcessorEditor)

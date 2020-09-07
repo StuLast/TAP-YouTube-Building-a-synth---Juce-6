@@ -21,6 +21,8 @@ TapsynthTutorialsAudioProcessorEditor::TapsynthTutorialsAudioProcessorEditor (Ta
     attackSlider.setRange(0.1, 5000);
     attackSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 20.0, 10.0);
     attackSlider.setValue(0.1);
+    attackSliderAttachment.reset(new juce::AudioProcessorValueTreeState::SliderAttachment(valueTreeState, "attack", attackSlider));
+    
     addAndMakeVisible(attackSlider);
 
 }

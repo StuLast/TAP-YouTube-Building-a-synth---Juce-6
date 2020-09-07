@@ -18,7 +18,7 @@ bool SynthVoice::canPlaySound(juce::SynthesiserSound* sound)
 void SynthVoice::getParam(float attack)
 {
     //@TODO - Remove Debug Code
-    juce::String message = "Attack reported to: " + std::to_string(attack);
+    juce::String message = "Attack reported as: " + std::to_string(attack);
     juce::Logger::outputDebugString(message);
     //@END TODO
 
@@ -30,6 +30,13 @@ void SynthVoice::getParam(float attack)
 
 void SynthVoice::startNote(int midiNoteNumber, float velocity, juce::SynthesiserSound* sound, int currentPitchWheelPosition)
 {
+    //@TODO - Remove Debug Code
+    juce::String message = "Midi Note Pressed: " + std::to_string(midiNoteNumber);
+    juce::Logger::writeToLog(message);
+    juce::Logger::outputDebugString(message);
+    //@END TODO
+
+
     env1.trigger = 1;
     level = velocity;
     frequency = juce::MidiMessage::getMidiNoteInHertz(midiNoteNumber);
